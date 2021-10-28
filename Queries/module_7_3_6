@@ -1,0 +1,23 @@
+-- query information relevant for the Sales team
+SELECT ri.emp_no
+	,ri.first_name
+	,ri.last_name
+	,d.dept_name
+FROM retirement_info AS ri
+INNER JOIN dept_emp AS de
+	ON (de.emp_no = ri.emp_no)
+INNER JOIN departments AS d
+	ON (d.dept_no = de.dept_no)
+WHERE d.dept_name = 'Sales';
+
+-- query information relevant for the Sales and Development teams
+SELECT ri.emp_no
+	,ri.first_name
+	,ri.last_name
+	,d.dept_name
+FROM retirement_info AS ri
+INNER JOIN dept_emp AS de
+	ON (de.emp_no = ri.emp_no)
+INNER JOIN departments AS d
+	ON (d.dept_no = de.dept_no)
+WHERE d.dept_name IN ('Sales', 'Development');
