@@ -40,6 +40,25 @@ This produced the following results:
 
 ![image](https://user-images.githubusercontent.com/90691846/139661019-21f255f9-18a1-47be-a544-f665397a3cb0.png)
 
+When we run the following query we get the amount of employees for each title that are eligible for the mentorship program.
+
+```
+SELECT COUNT(DISTINCT(e.emp_no)), t.title
+FROM employees AS e
+INNER JOIN dept_emp AS de 
+ON de.emp_no = e.emp_no
+INNER JOIN titles AS t
+ON t.emp_no = e.emp_no
+WHERE (de.to_date = '9999-01-01')
+AND (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+GROUP BY t.title;
+```
+
+Which has the following results:
+
+![image](https://user-images.githubusercontent.com/90691846/139667217-26637d7a-e81b-4023-8c36-a7362937ef9c.png)
+
+
 When we compare the retiring employees available to participate in the mentorship program to the amount of employees staffed in each area, then we can see there is enough employees to mentor the next generation.
 
 
